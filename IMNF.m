@@ -1,0 +1,24 @@
+% Function name....: IMNF
+% Date.............: October 05, 2007
+% Author...........: Adriano O. Andrade, PhD
+%                    aoandrade@eletrica.ufu.br
+% Description......:
+%                    This function estimates the instantaneous mean
+%                    frequency as defined in J. S. Karlsson, B. Gerdle, M.
+%                    Akay, "Analyzing Surface Myoelectric Signals Recorded
+%                    During Isokinetic Contractions", vol. 20, pp. 97-105, IEEE
+%                    Engineering in Medicine and Biology, 2001
+%                    
+% Parameters.......: 
+%                  
+% Remarks..........:
+%                    The colormap is ploted in 256 levels of gray
+
+function [imnf_out] = IMNF(EMG,B,F)
+
+    D = sum(B,1);
+    for i=1:size(B,1)
+        B(i,:) = B(i,:)*F(i);
+    end
+    N = sum(B,1);
+    imnf_out = N./D;
