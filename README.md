@@ -1,5 +1,6 @@
 # EMD---Hilbert-Spectrum
 Matlab toolbox with several functions for time-frequency analysis
+
 Contact: Prof. Adriano Andrade (adriano@ufu.br)
 
 How to cite this toolbox:
@@ -9,4 +10,5 @@ https://doi.org/10.1016/j.ins.2007.12.013
 
 [2] Andrade, A.O. (2005). Decomposition and analysis of electromyographic signals (PhD thesis). University of Reading, Reading, United Kingdom. 
 https://doi.org/10.13140/RG.2.2.33350.06727
+
 https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.422770
