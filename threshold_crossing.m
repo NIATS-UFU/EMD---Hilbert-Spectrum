@@ -16,12 +16,12 @@ function [z,index]= threshold_crossing(y,threshold)
   k = 0;
   s=length(y);
   for I=1:s-1,
-      if(y(I+1)>=threshold)&(y(I)<threshold),%---> - to + (direction)
+      if(y(I+1)>=threshold)&&(y(I)<threshold),%---> - to + (direction)
           z=z+1; 
           k = k+1;
           index(k) = I;
       end;
-      if(y(I+1)<threshold)&(y(I)>=threshold),%<--- + to - (direction)
+      if(y(I+1)<threshold)&&(y(I)>=threshold),%<--- + to - (direction)
           z=z+1; 
           k = k+1;
           index(k) = I;

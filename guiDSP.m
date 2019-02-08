@@ -308,7 +308,11 @@ sampFreq = str2double(get(handles.editSampFreq,'String'));
 % estimates the Power Spectral Density of 
 % a discrete-time signal vector X using Welch's averaged, modified
 % periodogram method.  
-[Pxx,F] = PSD(s_i_g_n_a_l,256,sampFreq);
+
+WindowSize = 256;
+nPointsFFT = 1024;
+[Pxx,F] = pwelch(s_i_g_n_a_l,WindowSize, [],nPointsFFT, sampFreq); %input signal
+
 Pxx = 10*log10(Pxx); %dB
 
 %Plotting
@@ -633,7 +637,8 @@ function varargout = IMF_anlysis_Callback(h, eventdata, handles, varargin)
     % a discrete-time signal vector X using Welch's averaged, modified
     % periodogram method.  
     WindowSize = 256;
-    [Pxx,F] = PSD(s_i_g_n_a_l,WindowSize,sampFreq); %input signal
+    nPointsFFT = 1024;
+    [Pxx,F] = pwelch(s_i_g_n_a_l,WindowSize, [],nPointsFFT, sampFreq); %input signal
     MaxPxx=max(Pxx);
     str  = ('signal');
 
@@ -641,7 +646,7 @@ function varargout = IMF_anlysis_Callback(h, eventdata, handles, varargin)
     numberIMFs = min(size(i_m_fs));
 % 
      for i=1:numberIMFs,
-           [Pxx(:,i+1),F(:,i+1)] = PSD(i_m_fs(i,:),WindowSize,sampFreq); %input signal
+           [Pxx(:,i+1),F(:,i+1)] = pwelch(i_m_fs(i,:),WindowSize,[],nPointsFFT,sampFreq); %input signal
            auxStr= (['imf ', num2str(i)]);
            str = str2mat(str,auxStr);
      end;
